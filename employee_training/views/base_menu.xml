@@ -1,0 +1,12 @@
+<odoo>
+    <menuitem
+            id='employee_root_menu'
+            name='employee'
+    />
+
+    <menuitem
+            id='employee_menu'
+            name='employee'
+            parent='employee_root_menu'
+    />
+</odoo>

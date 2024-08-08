@@ -1,0 +1,51 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="employee_view_tree" model="ir.ui.view">
+        <field name="name">training_program.tree</field>
+        <field name="model">training_program</field>
+        <field name="arch" type="xml">
+            <tree string="Training Programs">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="employee_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="employee_view_form" model="ir.ui.view">
+        <field name="name">training_program.form</field>
+        <field name="model">training_program</field>
+        <field name="arch" type="xml">
+            <form string="Training Program">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="employee_id"/>
+                        <field name="attendance_ids">
+                            <tree string="Attendances">
+                                <field name="employee_id"/>
+                                <field name="date"/>
+                                <field name="status"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="training_program_action" model="ir.actions.act_window">
+        <field name="name">training_program</field>
+        <field name="res_model">training_program</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem
+            id="training_program_menu"
+            name="Training Programs"
+            parent="employee_root_menu"
+            action="training_program_action"/>
+</odoo>
