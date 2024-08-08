@@ -1,0 +1,55 @@
+<odoo>
+    <template id="todo_task_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <!-- Header -->
+
+                <!-- Main Content -->
+                <div class="content" style="margin-top: 20px;">
+                    <div class="task-info">
+                        <h2 style="color: #337ab7;">Task Information</h2>
+                        <div class="task-detail">
+                            <p><strong>Task:</strong> <span t-field="docs[0].task_name"/></p>
+                            <p><strong>Due Date:</strong> <span t-field="docs[0].due_date"/></p>
+                            <p><strong>Assign To:</strong> <span t-field="docs[0].assign_to.name"/></p>
+                            <p><strong>Estimated Time:</strong> <span t-field="docs[0].estimated_time"/> hours</p>
+                        </div>
+                    </div>
+
+                    <div class="description" style="margin-top: 20px;">
+                        <h2 style="color: #337ab7;">Description</h2>
+                        <p><span t-field="docs[0].description"/></p>
+                    </div>
+
+                    <!-- Timesheet -->
+                    <div class="timesheet" style="margin-top: 20px; text-align: center;">
+                        <div style="display: inline-block; width: 100%; border: 3px solid black; padding: 10px; overflow-x: auto;">
+                            <h2 style="color: #337ab7; margin: 0 0 10px 0; text-align: center;">Timesheet</h2>
+                            <table class="table table-condensed timesheet-table" style="width: 100%; border-collapse: collapse; border: 2px solid black;">
+                                <thead style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th style="padding: 8px; text-align: center; border-right: 1px solid black;">Date</th>
+                                        <th style="padding: 8px; text-align: center; border-right: 1px solid black;">Description</th>
+                                        <th style="padding: 8px; text-align: center;">Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs[0].line_ids" t-as="line">
+                                        <tr>
+                                            <td style="padding: 8px; text-align: center; border-right: 1px solid black;"><span t-field="line.date"/></td>
+                                            <td style="padding: 8px; text-align: center; border-right: 1px solid black;"><span t-field="line.description"/></td>
+                                            <td style="padding: 8px; text-align: center;"><span t-field="line.time"/> hours</td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+
+            </t>
+        </t>
+    </template>
+</odoo>
